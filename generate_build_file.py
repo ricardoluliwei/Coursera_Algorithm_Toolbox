@@ -24,15 +24,16 @@ def CreateBuildFile(path_name):
     for sub_path in path_name.iterdir():
         if sub_path.is_dir():
             CreateBuildFile(sub_path)
-        elif sub_path.is_file() and not Path("BUILD").is_file():
+        elif sub_path.is_file():
             target = sub_path.stem
             extension = sub_path.suffix
             if (extension == ".cpp"):
-              with (path_name / "BUILD").open() as fw:
+              with (path_name / "BUILD").open("w") as fw:
                   fw.write("cc_binary(\n")
-                  fw.write(f"    name = \"{target}\"\n")
-                  fw.write(f"    srcs = \"{sub_path.name}\"\n")
-                  fw.write("deps = [\"@com_github_google_glog//:glog\"]\n\n")
+                  fw.write(f"    name = \"{target}\",\n")
+                  fw.write(f"    srcs = [\"{sub_path.name}\"],\n")
+                  fw.write("    deps = [\"@com_github_google_glog//:glog\"],\n")
+                  fw.write(")\n\n")
 
 def main():
   # CheckWorkspace()

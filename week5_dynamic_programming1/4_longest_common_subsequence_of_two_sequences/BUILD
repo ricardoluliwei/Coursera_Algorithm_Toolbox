@@ -1,6 +1,6 @@
 cc_binary(
-    name = "fibonacci",
-    srcs = ["fibonacci.cpp"],
+    name = "lcs2",
+    srcs = ["lcs2.cpp"],
     deps = ["@com_github_google_glog//:glog"],
 )
 
