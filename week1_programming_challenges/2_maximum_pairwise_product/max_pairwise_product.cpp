@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 
+#include <glog/logging.h>
+
 int64_t MaxPairwiseProduct(const std::vector<int>& numbers) {
   int max_num = -1;
   int second_max_num = -1;

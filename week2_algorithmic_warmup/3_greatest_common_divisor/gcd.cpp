@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 
 int gcd_naive(int a, int b) {
@@ -10,6 +11,19 @@ int gcd_naive(int a, int b) {
     }
   }
   return current_gcd;
+}
+
+int gcd(int a, int b) {
+  if (a < b) {
+    std::swap(a, b);
+  }
+  return gcd_recursive(a, b);
+}
+
+int gcd_recursive(int a, int b) {
+  // assert a > b
+  if (b == 0) return a;
+  return gcd_recursive(b, a % b);
 }
 
 int main() {
