@@ -13,6 +13,12 @@ int gcd_naive(int a, int b) {
   return current_gcd;
 }
 
+int gcd_recursive(int a, int b) {
+  // assert a > b
+  if (b == 0) return a;
+  return gcd_recursive(b, a % b);
+}
+
 int gcd(int a, int b) {
   if (a < b) {
     std::swap(a, b);
@@ -20,15 +26,9 @@ int gcd(int a, int b) {
   return gcd_recursive(a, b);
 }
 
-int gcd_recursive(int a, int b) {
-  // assert a > b
-  if (b == 0) return a;
-  return gcd_recursive(b, a % b);
-}
-
 int main() {
   int a, b;
   std::cin >> a >> b;
-  std::cout << gcd_naive(a, b) << std::endl;
+  std::cout << gcd(a, b) << std::endl;
   return 0;
 }
